@@ -1,0 +1,1 @@
+Your SK Project content will be placed in this directory

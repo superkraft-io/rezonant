@@ -1,0 +1,9 @@
+[submodule "iPlug2_SK"]
+	path = iPlug2_SK
+	url = https://github.com/superkraft-io/iPlug2_SK.git
+[submodule "skxx"]
+	path = skxx
+	url = https://github.com/superkraft-io/skxx.git
+[submodule "soft_backend/superkraft"]
+	path = soft_backend/superkraft
+	url = https://github.com/superkraft-io/superkraft.git
