@@ -24,9 +24,20 @@ There is a set of steps that need to be taken in order to get started, however a
 
 ### Windows steps
 Open visual studio project and install NuGet packages:
-- WIL and WebView2
+- Microsoft.Windows.ImplementationLibrary (version 1.0.250325.1)
+- Microsoft.Web.WebView2 (version 1.0.3537.50)
 
 ## How to use
 You will now mainly put most of your non-critical logic in the SK++ soft backend (virtual JS backend) and occasionally in the hard backend (C++ backend) via native actions,
 while your critical logic (such as the audio processing logic) will exist inside the hard backend.
 
+# TROUBLESHOOTING
+
+### Visual Studio complains about that the prebuild script `The command "CALL ...scripts\postbuild-win.bat"`
+You need to open Visual Studio with Administator priveleges.
+
+### Visual Studio complains about a NuGet package
+You need to install the exact version of the NuGet package.
+
+### My plugin builds but doesn't show up
+This is likely due to the plugin ID being the same as another plugin installed on your computer. Change the plugin ID and try again.
