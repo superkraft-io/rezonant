@@ -273,7 +273,31 @@ async function fixStuff(options) {
     }
 
     if (os === 'darwin'){
+        var strToReplace = '${SRCROOT}/../../../rezonant/iPlug2_SK/../skxx/bundler/prebuild_macos.sh'
+        var replacementStr = '${SRCROOT}/../../../rezonant/skxx/bundler/prebuild_macos.sh'
 
+        var pathToCheck = options.outputBasePath  + `/${options.outputProjectName}/projects/${options.outputProjectName}-macOS.xcodeproj/xcshareddata/xcschemes/`
+        var files = fs.readdirSync(pathToCheck)
+        for (const file of files) {
+            if (file.endsWith('.xcscheme')) {
+                var path = pathToCheck + file
+                var input = fs.readFileSync(path).toString()
+
+                if (input.indexOf(strToReplace) > -1){
+                    var x = 0
+                } else {
+                    continue
+                }
+
+                var out = input.split(strToReplace).join(replacementStr)
+
+                if (input !== out){
+                    var x = 0
+                }
+
+                fs.writeFileSync(path, out)
+            }
+        }
     }
 }
 

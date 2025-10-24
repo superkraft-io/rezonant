@@ -25,6 +25,11 @@ var bundlerRoot = path.resolve(skxxRoot + 'bundler') + '/'
 
 
 var run = async ()=>{
+    //download VST3 SDK
+    var { downloadAndExtractVST3SDK } = require(__dirname + '/modules/vst3_sdk.js')
+    await downloadAndExtractVST3SDK(__dirname)
+
+    
     //create .sk folder in parent folder
     try { fs.mkdirSync(dotSKRoot) } catch(err) {}
     exec(`attrib +H "${dotSKRoot}"`, (error, stdout, stderr) => {
@@ -60,9 +65,12 @@ var run = async ()=>{
     if (!fs.existsSync(pluginHeader_target)) fs.cpSync(pluginHeader_source, pluginHeader_target)
 
 
+
+
+
     //duplicate project
+    var { duplicateProject } = require(__dirname + '/modules/duplicate_project.js')
     var projectPath = path.resolve(iPlug2Root + 'Examples/IPlugWebUI_SK/')
-    var {duplicateProject} = require('./duplicate_module.js')
     const res = await duplicateProject({
         inputProjectName: projectPath,
         outputProjectName: 'SK_DAW_Plugin_Project',
