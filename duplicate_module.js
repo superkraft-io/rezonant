@@ -255,18 +255,20 @@ async function fixStuff(options) {
     var os =  process.platform
 
     //fix prebuild script call
-    const re = /\$\((?:SolutionDir)\)\.\.[\\/]\.\.[\\/]\.\.[\\/]skxx_daw_plugin_lib[\\/]iPlug2_SK[\\/]skxx[\\/]bundler[\\/]sk_prebuild_script\.js/g;
-    
+   
 
     if (os === 'win32'){
+        var strToReplace = '$(SolutionDir)..\\..\\..\\rezonant\\iPlug2_SK\\skxx\\bundler\\sk_prebuild_script.js'
+        var replacementStr = '$(SolutionDir)..\\..\\rezonant\\skxx\\bundler\\sk_prebuild_script.js'
+
         var path = options.outputBasePath  + `/${options.outputProjectName}/projects/${options.outputProjectName}-app.vcxproj`
         var input = fs.readFileSync(path).toString()
-        var out = input.replace(re, "$(SolutionDir)..\\..\\skxx_daw_plugin_lib\\skxx\\bundler\\sk_prebuild_script.js").split('\\').join('/');
+        var out = input.split(strToReplace).join(replacementStr).split('\\').join('/');
         fs.writeFileSync(path, out)
 
         path = options.outputBasePath  + `/${options.outputProjectName}/projects/${options.outputProjectName}-vst3.vcxproj`
         input = fs.readFileSync(path).toString()
-        out = input.replace(re, "$(SolutionDir)..\\..\\skxx_daw_plugin_lib\\skxx\\bundler\\sk_prebuild_script.js").split('\\').join('/');
+        var out = input.split(strToReplace).join(replacementStr).split('\\').join('/');
         fs.writeFileSync(path, out)
     }
 

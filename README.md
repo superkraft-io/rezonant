@@ -1,4 +1,4 @@
-# skxx_iplug2_demo
+# Rezonant
 
 ## Prerequisites
 - Runtime: NodeJS
@@ -17,12 +17,13 @@ There is a set of steps that need to be taken in order to get started, however a
 - Create a new repo for your project: Create your project repo on whatever service you are using e.g GitHub, Bitbucket, etc
 - Clone your project repo to your disk
 - Navigate inside your project repo: E.g `cd my_project`
-- Clone this SK++ repo inside your project repo: `git clone https://github.com/superkraft-io/skxx_daw_plugin_lib.git`
-- Navigate into `skxx_daw_plugin_lib`
-- Run `node skxx_daw_plugin_init`
+- Clone this SK++ repo inside your project repo: `git clone https://github.com/superkraft-io/rezonant.git`
+- Navigate into `rezonant`
+- Run `node init`
 
->>> open visual studio project and install NuGet packages: WIL and WebView2
+### Windows steps
+Open visual studio project and install NuGet packages: WIL and WebView2
 
 You will now mainly put most of your non-critical logic in the SK++ soft backend (virtual JS backend) and occasionally in the hard backend (C++ backend) via native actions,
-while your critical logic will exist, such as the audio processing logic, inside the hard backend.
+while your critical logic (such as the audio processing logic) will exist inside the hard backend.
 
