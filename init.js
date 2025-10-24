@@ -74,8 +74,8 @@ var run = async ()=>{
     var vsPath = res.outputPath + '/SK_DAW_Plugin_Project.sln'
     fs.symlinkSync(vsPath, projectRoot + 'visual_studio.sln');
     
-    var xcodePath = res.outputPath + '/SK_DAW_Plugin_Project.code-workspace'
-    fs.symlinkSync(xcodePath, projectRoot + 'xcode.code-workspace');
+    var xcodePath = res.outputPath + '/SK_DAW_Plugin_Project.xcworkspace'
+    fs.symlinkSync(xcodePath, projectRoot + 'xcode.xcworkspace');
 }
 
 run()
