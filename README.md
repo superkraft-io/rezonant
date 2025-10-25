@@ -1,5 +1,13 @@
 # Rezonant
 
+Rezonant is a minimalistic WebView based VST3/AU2 development framework based on iPlug2 and Superkraft.
+
+The goal is to make DAW plugin development easy, fun, and efficient.
+
+A Rezonant project starts at around 50MB size on disk and less than 100MB RAM.
+
+The coding style imitates how NodeJS/ElectronJS apps are developed.
+
 ## Prerequisites
 - Runtime: NodeJS
 - IDE
@@ -32,6 +40,11 @@ Open visual studio project and install NuGet packages:
 ## How to use
 You will now mainly put most of your non-critical logic in the SK++ soft backend (virtual JS backend) and occasionally in the hard backend (C++ backend) via native actions,
 while your critical logic (such as the audio processing logic) will exist inside the hard backend.
+
+## Tests
+
+- Windows 11
+- macOS Sonoma 14.5 - Apple M1 - 8GB
 
 # TROUBLESHOOTING
 
