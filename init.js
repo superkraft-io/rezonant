@@ -80,7 +80,7 @@ var run = async ()=>{
     var { duplicateProject } = require(__dirname + '/modules/duplicate_project.js')
     var projectPath = path.resolve(iPlug2Root + 'Examples/IPlugWebUI_SK/')
     const name = await ask('Name of project (no spaces or special characters):');
-    const manufacturer = await ask('Manufacturer:');
+    const manufacturer = await ask('Manufacturer (no spaces):');
 
     const res = await duplicateProject({
         inputProjectName: projectPath,
