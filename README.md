@@ -19,8 +19,10 @@ There is a set of steps that need to be taken in order to get started, however a
 3. Navigate inside your project repo: E.g `cd my_project`
 4. Clone this SK++ repo inside your project repo: `git clone --recurse-submodules https://github.com/superkraft-io/rezonant.git`
 5. Navigate into `rezonant`
-6. Run `node init`
-7. Navigate back to your project and open either `visual_Studio.sln` or `xcode.code-worspace`
+6. Run `npm install`
+7. Run `node init`
+8. Enter your project name and your manufacturer name
+9. Navigate back to your project and open either `visual_Studio.sln` or `xcode.code-worspace`
 
 ### Windows steps
 Open visual studio project and install NuGet packages:
