@@ -4,22 +4,12 @@ class SK_App_View extends sk_ui_component {
     constructor(opt){
         super(opt)
 
-
-        sk_api.window.on('maximize', _e => {
-            console.log('maximized')
-            console.log(_e)
-        })
-
-        this.add.titlebar(_c => {
-            _c.os = sk_api.staticInfo.os
-        })
-
         sk.app.body.styling = 'center tbb scrollable'
 
         this.styling = 'left middle ttb scrollable'
 
         this.add.label(_c => {
-            _c.text = 'Welcome to Superkraft for iPlug2 😎'
+            _c.text = 'Welcome to Rezonant 😎'
             _c.marginBottom = 64
         })
 

@@ -6,7 +6,7 @@ module.exports = class SK_View extends SK_RootView {
         super(opt)
         
         this.info = {
-            title: 'SK iPlug2 Demo',
+            title: 'Rezonant Demo',
 
             width: 1000,
             height: 512,
