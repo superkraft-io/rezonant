@@ -11,6 +11,10 @@ The coding style imitates how NodeJS/ElectronJS apps are developed.
 ## Features
 
 - Bundling: None, Shallow, Deep
+- Plugin parameter logic: Automatically handles plugin parameter logic for you. Just add a plugin compatible UI component (slider, checkbox, switch, list...) and give it a plugin parameter ID, and the rest is handled my Rezonant
+- Native Actions: Call native C++ functions from the frontend
+- NodeJS-like coding style in the frontent
+- A virtual backend that behaves very much like a NodeJS backend
 
 
 ## Prerequisites
