@@ -8,6 +8,11 @@ A Rezonant project starts at around 50MB size on disk and less than 100MB RAM.
 
 The coding style imitates how NodeJS/ElectronJS apps are developed.
 
+## Features
+
+- Bundling: None, Shallow, Deep
+
+
 ## Prerequisites
 - Runtime: NodeJS
 - IDE
@@ -31,6 +36,8 @@ There is a set of steps that need to be taken in order to get started, however a
 7. Run `node init`
 8. Enter your project name and your manufacturer name
 9. Navigate back to your project and open either `visual_Studio.sln` or `xcode.code-worspace`
+
+- `IMPORTANT on Windows` Open the Visual Studio project in **USER** mode the first time, and the close Visual Studio and re-open the project in Admin mode
 
 ### Windows steps
 Open visual studio project and install NuGet packages:
