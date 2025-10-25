@@ -60,7 +60,7 @@ var run = async ()=>{
 
     
     //copy soft_backend if it doesn't already exist
-    var soft_backend_source = path.resolve(here + 'soft_backend/')
+    var soft_backend_source = path.resolve(here + '.soft_backend/')
     var soft_backend_target = path.resolve(projectRoot + 'soft_backend/')
     if (!fs.existsSync(soft_backend_target)) fs.cpSync(soft_backend_source, soft_backend_target, {recursive: true})
 
