@@ -27,7 +27,7 @@ The coding style imitates how NodeJS/ElectronJS apps are developed.
 
 - DAW: Reaper
 - Libraries
-    - Windows: Visual Leak Detector
+    - Windows: (Optional) Visual Leak Detector
 
 ## Instructions
 
