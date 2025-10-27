@@ -17,6 +17,9 @@ The coding style imitates how NodeJS/ElectronJS apps are developed.
 - A virtual backend that behaves very much like a NodeJS backend. This will enable non-critical code to be executed away from the frontend, acting like a bridge
 - Multiple windows using the ProtonJS NodeJS module
 - Stock UI library thanks to Superkraft
+- Easy one-way data push from hard backend to frontend
+- Thread safety machanisms
+- Screen refreshrate synced data pushing (parameter values, etc...)
 
 
 ## Prerequisites
