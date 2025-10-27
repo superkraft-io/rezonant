@@ -50,14 +50,22 @@ Open visual studio project and install NuGet packages:
 - Microsoft.Windows.ImplementationLibrary (version 1.0.250325.1)
 - Microsoft.Web.WebView2 (version 1.0.3537.50)
 
+## Tested on
+- Windows 11
+- macOS Sonoma 14.5 - Apple M1 - 8GB
+
+
 ## How to use
 You will now mainly put most of your non-critical logic in the SK++ soft backend (virtual JS backend) and occasionally in the hard backend (C++ backend) via native actions,
 while your critical logic (such as the audio processing logic) will exist inside the hard backend.
 
-## Tests
+### Recommended workflow
+During development, always use None Bundling. This will give you hot-reloading of both the frontend and then soft backend.
 
-- Windows 11
-- macOS Sonoma 14.5 - Apple M1 - 8GB
+Once you're happy with wit your plugin, build it using Release mode which will use deep bundling.
+
+> Release mode does not currently support other bundling options such as shallow bundling or none bundling. Usually plugins will be fairly self-contained when it comes to logic and UI.
+
 
 # TROUBLESHOOTING
 
@@ -69,3 +77,6 @@ You need to install the exact version of the NuGet package.
 
 ### My plugin builds but doesn't show up
 This is likely due to the plugin ID being the same as another plugin installed on your computer. Change the plugin ID and try again.
+
+### I refresh the frontend of the plugin, but some frontend code is not reloaded (none bundling)
+Just close the plugin window and re-open it again. This will force reloading all assets.
