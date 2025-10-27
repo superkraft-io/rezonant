@@ -38,6 +38,10 @@ var skxxRoot = path.resolve(here + 'skxx') + '/'
 var iPlug2Root = path.resolve(here + 'iPlug2_SK') + '/'
 var bundlerRoot = path.resolve(skxxRoot + 'bundler') + '/'
 
+if (fs.existsSync(dotSKRoot)){
+    console.error('[ERROR] Project seems to already be initialized.')
+    process.exit(1)
+}
 
 var run = async ()=>{
     //download VST3 SDK
@@ -98,13 +102,22 @@ var run = async ()=>{
 
 
     //copy plugin header if it doesn't already exist
-    var pluginHeader_source = path.resolve(skxxRoot + 'frameworks/iPlug2/templates/sk_daw_plugin.hpp')
-    var pluginHeader_target = path.resolve(projectRoot + 'sk_daw_plugin.hpp')
+    var pluginHeader_source = path.resolve(skxxRoot + 'frameworks/iPlug2/templates/rezonant_plugin.hpp')
+    var pluginHeader_target = path.resolve(projectRoot + 'rezonant_plugin.hpp')
     if (!fs.existsSync(pluginHeader_target)){
         fs.cpSync(pluginHeader_source, pluginHeader_target)
         fs.writeFileSync(pluginHeader_target, fs.readFileSync(pluginHeader_target).toString().split('<plugin_class_name>').join(name))
     }
 
+
+
+    //add project file
+    console.log('Adding project file')
+    var newProject_app_path = path.resolve(dotSKRoot + name +'/projects/' + name + '-app.vcxproj')
+    var newProjectContent_vs = fs.readFileSync(newProject_app_path).toString()
+    newProjectContent_vs = newProjectContent_vs.replace('<ClInclude Include="../config.h" />', `<ClInclude Include="../config.h" />
+    <ClInclude Include="../../../rezonant_plugin.hpp" />`)
+    fs.writeFileSync(newProject_app_path, newProjectContent_vs)
 
     console.log('Done! You can close this window now. Have fun :)')
 }

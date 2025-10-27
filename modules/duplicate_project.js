@@ -153,36 +153,16 @@ async function parseXcconfig(xcconfigPath) {
 
 async function setUniqueId(projectRoot, uniqueId) {
     // Search in config/ for a line like: #define PLUG_UNIQUE_ID 'ABCD'
-    const cfgDir = path.join(projectRoot, 'config');
-    async function walk(dir) {
-        let items = [];
-        try {
-            items = await fsp.readdir(dir, { withFileTypes: true });
-        } catch {
-            return;
-        }
-        for (const it of items) {
-            const full = path.join(dir, it.name);
-            if (it.isDirectory()) {
-                await walk(full);
-            } else if (it.isFile() && /\.(h|hpp|txt|inl|mm|m|cpp|c)$/.test(it.name)) {
-                try {
-                    let txt = await readText(full);
-                    const before = txt;
-                    txt = txt.replace(
-                        /#define\s+PLUG_UNIQUE_ID\s+'?[A-Za-z0-9]{4}'?/,
-                        `#define PLUG_UNIQUE_ID '${uniqueId}'`
-                    );
-                    if (txt !== before) {
-                        await writeText(full, txt);
-                    }
-                } catch {
-                    // ignore individual file errors
-                }
-            }
-        }
-    }
-    await walk(cfgDir);
+    const cfgPath = path.join(projectRoot, 'config.h');
+   
+    let txt = await readText(cfgPath);
+    const before = txt;
+    txt = txt.replace(
+        /#define\s+PLUG_UNIQUE_ID\s+'?[A-Za-z0-9]{4}'?/,
+        `#define PLUG_UNIQUE_ID '${uniqueId}'`
+    );
+    
+    await writeText(cfgPath, txt);
 }
 
 async function replaceInFile(filePath, searchproject, replaceproject, searchman, replaceman, oldroot, newroot) {
