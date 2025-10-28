@@ -19,7 +19,7 @@ class SK_App_View extends sk_ui_component {
             _c.vertical = false
             
             this.sectionsList = _c.add.tab_btns()
-            this.sectionsList.selectItem({key: 'id', value: 'window'})
+            this.sectionsList.selectItem({key: 'id', value: 'VUMeter'})
         })
     }
 }
