@@ -111,13 +111,17 @@ var run = async ()=>{
 
 
 
-    //add project file
+    //add project file to solutions
+    //--- Visual Studio
     console.log('Adding project file')
-    var newProject_app_path = path.resolve(dotSKRoot + name +'/projects/' + name + '-app.vcxproj')
-    var newProjectContent_vs = fs.readFileSync(newProject_app_path).toString()
+    var newProject_app_vs_path = path.resolve(dotSKRoot + name +'/projects/' + name + '-app.vcxproj')
+    var newProjectContent_vs = fs.readFileSync(newProject_app_vs_path).toString()
     newProjectContent_vs = newProjectContent_vs.replace('<ClInclude Include="../config.h" />', `<ClInclude Include="../config.h" />
     <ClInclude Include="../../../rezonant_plugin.hpp" />`)
-    fs.writeFileSync(newProject_app_path, newProjectContent_vs)
+    fs.writeFileSync(newProject_app_vs_path, newProjectContent_vs)
+
+
+    
 
     console.log('Done! You can close this window now. Have fun :)')
 }
