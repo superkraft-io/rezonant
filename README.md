@@ -69,6 +69,9 @@ Once you're happy with wit your plugin, build it using Release mode which will u
 
 > Release mode does not currently support other bundling options such as shallow bundling or none bundling. Usually plugins will be fairly self-contained when it comes to logic and UI.
 
+### Debugging
+Press `F12` on Windows and `CMD+Sift+F12` on MacOS to enable debug mode. This will neable `Right Click -> Inspect` inside the plugin window.
+
 
 # TROUBLESHOOTING
 
