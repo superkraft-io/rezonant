@@ -78,8 +78,15 @@ You need to open Visual Studio with Administator priveleges.
 ### Visual Studio complains about a NuGet package
 You need to install the exact version of the NuGet package.
 
-### My plugin builds but doesn't show up
+### The IDE closes the standalone app of the plugin as soon as I run it
+This is most likely due to SK++ failing to load the SK config file located inside `soft_backend`.
+Ensure the following:
+- `soft_backend` exists in your project
+- **ONLY** `.soft_backend` exists inside the `rezonant` repo. Notice that this one has a dot (.) at the beginning. If there exists a non-dot `soft_backend` folder inside the `rezonant` repo, SK++ will fail, and thus your plugin won't run.
+
+### My plugin builds but doesn't show up inside the DAW
 This is likely due to the plugin ID being the same as another plugin installed on your computer. Change the plugin ID and try again.
+The Rezonant init script normally generates a unique ID, but there is no way of ensuring that the auto-generated ID won't crash with other vendors IDs.
 
 ### I refresh the frontend of the plugin, but some frontend code is not reloaded (none bundling)
 Just close the plugin window and re-open it again. This will force reloading all assets.
