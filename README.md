@@ -87,6 +87,14 @@ You need to open Visual Studio with Administator priveleges.
 You need to install the exact version of the NuGet package.
 
 ### The IDE closes the standalone app of the plugin as soon as I run it
+There are two documented reasons why this may be happening.
+
+**An instance of your app is already running**
+Make sure that you are not running a copy of your app already.
+
+Looking at `config.h`, there is a macro named `APP_MULT 1` enables/disables multiple instances of your app to run.
+
+**Failing to load config file**
 This is most likely due to SK++ failing to load the SK config file located inside `soft_backend`.
 Ensure the following:
 - `soft_backend` exists in your project
