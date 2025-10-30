@@ -12,6 +12,10 @@ and that includes the entire UI library, backend logic, and more.
 
 The coding style imitates how NodeJS/ElectronJS apps are developed.
 
+## JOIN
+
+- Discord: [Join here](https://discord.gg/3Xc3hn53MT)
+
 ## Features
 
 - Bundling: None, Shallow, Deep
