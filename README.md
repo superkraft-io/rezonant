@@ -1,3 +1,5 @@
+![Rezonant Logo](resources/logo.jpg)
+
 # Rezonant
 
 Rezonant is a minimalistic WebView based VST3/AU2 development framework based on iPlug2 and Superkraft.
