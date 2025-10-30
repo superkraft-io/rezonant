@@ -1,4 +1,4 @@
-![Rezonant Logo](resources/logo.jpg)
+<img src="aresources/logo.jpg" alt="Rezonant Logo" width="256">
 
 # Rezonant
 
