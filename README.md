@@ -20,6 +20,7 @@ The coding style imitates how NodeJS/ElectronJS apps are developed.
 - Easy one-way data push from hard backend to frontend
 - Thread safety machanisms
 - Screen refreshrate synced data pushing (parameter values, etc...)
+- Optimized in all aspects, such as sending visual data from the backend to the frontend (VU data, Spectrogram, etc...)
 
 
 ## Prerequisites
