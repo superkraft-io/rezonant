@@ -4,7 +4,11 @@ Rezonant is a minimalistic WebView based VST3/AU2 development framework based on
 
 The goal is to make DAW plugin development easy, fun, and efficient.
 
-A Rezonant project starts at around 50MB size on disk and less than 100MB RAM.
+A base Rezonant project is quite small:
+- MacOS: 10MB size on disk and less than 50MB RAM
+
+and that includes the entire UI library, backend logic, and more.
+
 
 The coding style imitates how NodeJS/ElectronJS apps are developed.
 
