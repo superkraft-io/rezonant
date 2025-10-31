@@ -1,4 +1,4 @@
-<img src="resources/logo_facets.jpg" alt="Rezonant Logo" width="256">
+<img src="resources/logo_facets.png" alt="Rezonant Logo" width="256">
 
 # Rezonant
 
