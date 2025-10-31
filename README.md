@@ -83,6 +83,13 @@ Once you're happy with wit your plugin, build it using Release mode which will u
 ### Debugging
 Press `F12` on Windows and `CMD+Sift+F12` on MacOS to enable debug mode. This will neable `Right Click -> Inspect` inside the plugin window.
 
+## Configuring
+
+### Bit depth
+iPlug2 uses `double` data type by default.
+To use `float` instead, add this line in `config.h` to use `float`: `#define SAMPLE_TYPE_FLOAT`
+
+This is relevant when adding code to the `ProcessBlock()` function.
 
 # TROUBLESHOOTING
 
@@ -112,3 +119,18 @@ The Rezonant init script normally generates a unique ID, but there is no way of 
 
 ### I refresh the frontend of the plugin, but some frontend code is not reloaded (none bundling)
 Just close the plugin window and re-open it again. This will force reloading all assets.
+
+
+# The Future
+- Adopt a better and lightweight web renderer
+[Ultralight](https://ultralig.ht/) may be a good option, but is not free (I think?) and is also missing some things ([See here](https://github.com/ultralight-ux/Ultralight/issues/178)).
+[Servo](https://servo.org/) is free an open source, but is Rust based.
+Writing a custom renderer is possible, but also probably a multi-year initiative. I'm not doing that any time soon.
+
+- More build targets
+    - CLAP
+    - AAX
+    - Linux
+    - iOS
+    - Android
+    - WAM
