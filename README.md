@@ -87,9 +87,10 @@ Press `F12` on Windows and `CMD+Sift+F12` on MacOS to enable debug mode. This wi
 
 ### Bit depth
 iPlug2 uses `double` data type by default.
-To use `float` instead, add this line in `config.h` to use `float`: `#define SAMPLE_TYPE_FLOAT`
+To use `float` instead, you have to add `SAMPLE_TYPE_FLOAT` to your project preprocessor definitions:
+- In Visual Studio: Project Settings -> Select configuration `All Configurations` -> C/C++ -> Preprocessor -> Preprocessor Definitions -> Edit -> Add `SAMPLE_TYPE_FLOAT`
 
-This is relevant when adding code to the `ProcessBlock()` function.
+This is relevant when adding code to the `ProcessBlock()` function, where the `samples` data type becomes `float` instead of `double`.
 
 # TROUBLESHOOTING
 
