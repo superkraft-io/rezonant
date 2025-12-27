@@ -135,3 +135,111 @@ Writing a custom renderer is possible, but also probably a multi-year initiative
     - iOS
     - Android
     - WAM
+
+
+
+
+# Guides
+
+## MacOS
+
+### Codesigning, Hardening & Notarization
+
+This process containes a few steps that need to be exectuted sequentially:
+1. Configuring Xcode
+2. Configuring your project
+3. Codesign & Hardening
+4. Notarizing
+5. Stapling
+
+
+#### 1. Configure Xcode
+- Open Xcode
+- Open Settings
+- Click "Accounts" tab
+- Add and log in to your Apple ID
+- Select your team
+- Click "Manage Certificates..." at the lower right corner
+- Click the `+` (plus) button with a dropdown icon at the lower left corner
+- Select "Developer ID Application"
+
+Once certificates are downloaded, click the Done button and close the Settings window.
+
+#### 2. Configure your project
+- Click on your project
+- Select "Signing & Capabilities"
+- Uncheck "Automatically manage signing"
+- Select your team
+- Set "Signing Certificate" to `Developer ID Application`
+
+Now build your targets AUv2 and VST3 and wait until they complete building.
+
+Once built, open terminal and follow the below instructions to codesign and notarize
+
+#### 3. Codesigning & Hardening
+Run this command for both the VST3 and the AUv2:
+`codesign --deep --force --options runtime --timestamp --sign "Developer ID Application: <team name> (<team id>)" <path to your VST3 or AUv2>`
+
+Make sure to resplace `<team name>` and `<team id>` and `<path to plugin VST3 or AUv2>`
+
+Example:
+`codesign --deep --force --options runtime --timestamp --sign "Developer ID Application: Superkraft (A12BC3DEF4)"/Users/username/Library/Audio/Plug-Ins/VST3/myPlugin.vst3`
+
+Expected output:
+`/Users/username/Library/Audio/Plug-Ins/VST3/myPlugin.vst3: replacing existing signature`
+
+#### 4. Notarizing
+First you need an "App Specific Password".
+To get one, you need to log in to your Apple ID accoint `https://account.apple.com`.
+Once logged in, click on "App Specific Passwords" and create one.
+
+Use in step 2 below:
+
+1. Zip the plugin:
+    - Zip VST3: `zip -r myPlugin-vst3.zip /Users/username/Library/Audio/Plug-Ins/VST3/myPlugin.vst3`
+    - Zip AUv2: `zip -r myPlugin-au2.zip /Users/username/Library/Audio/Plug-Ins/Components/myPlugin.component`
+
+2. Notarize the plugin:
+    - Notarize VST3: `xcrun notarytool submit myPlugin-vst3.zip --apple-id "YOUR_APPLE_ID_EMAIL" --team-id "A12BC3DEF4 (raplace this)" --password "YOUR_APP_SPECIFIC_PASSWORD" --wait`
+    - Notarize AUv2: `xcrun notarytool submit myPlugin-vst3.zip --apple-id "YOUR_APPLE_ID_EMAIL" --team-id "A12BC3DEF4 (raplace this)" --password "YOUR_APP_SPECIFIC_PASSWORD" --wait`
+
+
+Expected output:
+```
+Conducting pre-submission checks for myPlugin-vst3.zip and initiating connection to the Apple notary service...
+Submission ID received
+  id: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Upload progress: 100.00% (104 MB of 104 MB)   
+Successfully uploaded file
+  id: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+  path: /Users/username/myPlugin-vst3.zip
+Waiting for processing to complete.
+Current status: Accepted............
+Processing complete
+  id: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+  status: Accepted
+```
+
+#### 5. Stapling
+Stapling makes your plugin "offline read", meaning that MacOS will not reach out to the Apple servers to verify that the plugin is legitimate.
+
+Instead the plugin is stapled with a proof that it is legitimate.
+
+Now that your plugin files (VST3 and AUv2) are notarized, they need to be stapled.
+
+Run the following command for both of your plugin files:
+`xcrun stapler staple /Users/username/Library/Audio/Plug-Ins/VST3/myPlugin.vst3`
+
+Expected output:
+```
+Processing: /Users/username/Library/Audio/Plug-Ins/VST3/myPlugin.vst3
+Processing: /Users/username/Library/Audio/Plug-Ins/VST3/myPlugin.vst
+The staple and validate action worked!
+```
+
+
+Done!
+
+Now your plugin should be ready for deployment to millions of users.
+
+Have fun!
