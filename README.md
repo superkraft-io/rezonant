@@ -118,6 +118,10 @@ Ensure the following:
 This is likely due to the plugin ID being the same as another plugin installed on your computer. Change the plugin ID and try again.
 The Rezonant init script normally generates a unique ID, but there is no way of ensuring that the auto-generated ID won't crash with other vendors IDs.
 
+### My AUv2 plugin doesn't show up inside the DAW
+Ensure that your `.component` file is in the root of the `Components` folder like this: `.../Components/myPlugin.component`
+and not in a subfolder like this: `.../Components/subfolder/myPlugin.component`
+
 ### I refresh the frontend of the plugin, but some frontend code is not reloaded (none bundling)
 Just close the plugin window and re-open it again. This will force reloading all assets.
 
@@ -133,13 +137,21 @@ Writing a custom renderer is possible, but also probably a multi-year initiative
     - AAX
     - Linux
     - iOS
+    - iOS standalone app (iPlug2 apparently already has this)
     - Android
     - WAM
+
+- CMAKE (Latest version of iPlug2 apparently already has this)
 
 
 
 
 # Guides
+
+## Debugging
+
+Here are a few things you can do to debug your plugin:
+- Open dev tools inside the UI of your plugin and ensure that you don't have continous flowing errors
 
 ## MacOS
 

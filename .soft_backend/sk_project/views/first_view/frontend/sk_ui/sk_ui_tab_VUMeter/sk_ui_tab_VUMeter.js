@@ -9,7 +9,7 @@ class sk_ui_tab_VUMeter extends sk_ui_component {
             //...
         })
 
-        sk_api.pluginMngr.onData = res => {
+        sk_api.dawPluginMngr.onData = res => {
             if (res.id !== 'vuData') return
 
             const vuData = new Float32Array(res.data);
