@@ -152,6 +152,7 @@ Writing a custom renderer is possible, but also probably a multi-year initiative
 
 Here are a few things you can do to debug your plugin:
 - Open dev tools inside the UI of your plugin and ensure that you don't have continous flowing errors
+- Place `debugger;` in any of your JS code to trigger debugger break
 
 ## MacOS
 
